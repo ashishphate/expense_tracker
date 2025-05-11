@@ -1,4 +1,5 @@
 #Expense Manager Console Application
+
 ##Overview
 The Expense Manager is a Python-based console application designed to help users track their expenses efficiently. It provides a simple, text-based interface to add, view expenses and check monthly budget, with data persistence using a csv file. The application is ideal for users who prefer a lightweight, command-line tool for personal finance management.
 
