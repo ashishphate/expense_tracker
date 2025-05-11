@@ -1,5 +1,4 @@
 from datetime import datetime
-import functools
 
 
 class Expense:
@@ -44,6 +43,22 @@ class Expense:
         data.append(self.todict())
         print("Expense added successfully.")
         return
+
+
+    @staticmethod
+    def list(rows:list,fields):
+        i = 0
+        print(','.join(fields), end="\n")
+        while i < len(rows):
+            if i >= 10 and i % 10 == 0:
+                c = input("Do you want to continue Y/N?\n")
+                if str(c).lower() == "y":
+                    continue
+                else:
+                    break
+            print(','.join([rows[i][f] for f in fields]), end="\n")
+            i = i + 1
+        print("---------End----------")
 
 
     @staticmethod

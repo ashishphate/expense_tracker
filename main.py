@@ -6,30 +6,20 @@ def menu():
     data = []
     print("Hi, I am your Personal Expense Tracker.\n")
     while True:
-        choice = input("\nSelect an option: \n"
+        choice = input("\n"
                        "1:- Add Expense \n"
                        "2:- View Expense \n"
                        "3:- Track budget\n"
                        "4:- Save Expense \n"
-                       "5:- Exit\n")
+                       "5:- Exit\n"
+                       "Select an option: \n")
         if choice == "1":
             e = Expense()
             e.add(data)
         elif choice == "2":
             data = filemanager.write_data(data)
             rows = filemanager.get_data()
-            i = 0
-            print(','.join(filemanager.fieldnames),end="\n")
-            while i < len(rows):
-                if i>=10 and i%10 == 0:
-                    c = input("Do you want to continue Y/N?\n")
-                    if str(c).lower() == "y":
-                        continue
-                    else:
-                        break
-                print(','.join([rows[i][f] for f in filemanager.fieldnames]),end="\n")
-                i = i + 1
-            print("---------End----------")
+            Expense.list(rows,filemanager.fieldnames)
 
         elif choice == "3":
             data = filemanager.write_data(data)
@@ -43,7 +33,7 @@ def menu():
                 if cur_month_exp > amt:
                     print("You have exceeded your budget!")
                 else:
-                    print("You have enough budget")
+                    print(f"You have {amt-cur_month_exp} left for the month")
             except Exception as e:
                 print(str(e))
         elif choice == "4":
@@ -53,6 +43,8 @@ def menu():
             data = filemanager.write_data(data)
             print("Thank you!")
             break
+        else:
+            print("Invalid option")
 
 
 if __name__ == '__main__':
